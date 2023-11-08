@@ -11,13 +11,14 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+	   classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT' 
+		//'net.minecraftforge.gradle:ForgeGradle:1.2+'
     }
 }
 
-apply plugin: 'forge'
+apply plugin: 'forge' 
 
-group = "codechicken" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = "codechicken"  
 archivesBaseName = "CodeChickenCore"
 
 // Define properties file
@@ -30,21 +31,27 @@ configFile.withReader {
     project.ext.config = new ConfigSlurper().parse prop
 }
 
-dependencies {
-    compile "codechicken:CodeChickenLib:${config.mc_version}-${config.ccl_version}:dev"
+dependencies 
+{
+	compile  files('libs/CodeChickenLib-1.7.10-1.1.3-dev.jar')
+    //compile "codechicken:CodeChickenLib:${config.mc_version}-${config.ccl_version}:dev"
 }
 
-version =  "${project.config.mod_version}." + System.getenv("BUILD_NUMBER") ?: "1"
+version =  "${project.config.mod_version}"
 
 println  config.mc_version + "-" + config.forge_version
+
 // Setup the forge minecraft plugin data. Specify the preferred forge/minecraft version here
-minecraft {
+minecraft 
+{
     version = config.mc_version + "-" + config.forge_version
 	replace '${mod_version}', project.config.mod_version
 }
 
-sourceSets {
-    main {
+sourceSets 
+{
+    main 
+	{
         def root = project.projectDir.parentFile
         java {
             srcDir new File(root, "src")
@@ -55,59 +62,54 @@ sourceSets {
     }
 }
 
-processResources {
+processResources
+{
     //redo task if any of these properties change
     inputs.property "version", project.version
     inputs.property "mc_version", config.mc_version
     inputs.property "ccl_version", config.ccl_version
 
     // Replace properties in info files
-    from(sourceSets.main.resources.srcDirs) {
+    from(sourceSets.main.resources.srcDirs) 
+	{
         include '*.info'
         expand 'version':project.version,'mc_version':config.mc_version,'ccl_version':config.ccl_version
     }
     // Copy everything else
-    from(sourceSets.main.resources.srcDirs) {
+    from(sourceSets.main.resources.srcDirs) 
+	{
         include 'assets/**/*.*'
     }
 }
 
 version = "${project.minecraft.version}-${project.version}"
-def commonManifest = {
+def commonManifest =
+{
     attributes 'FMLCorePlugin': 'codechicken.core.launch.CodeChickenCorePlugin'
 }
+
 
 jar {
     classifier = 'universal'
     manifest commonManifest
 }
-
 task sourceJar(type: Jar) {
     from sourceSets.main.java
     classifier = 'src'
 }
-
 task devJar(type: Jar) {
     from sourceSets.main.output
     classifier = 'dev'
     manifest commonManifest
 }
 
+
 // Tell the artifact system about our extra jars
-artifacts {
+artifacts 
+{
     archives sourceJar, devJar
 }
-
-// Configure an upload task.
+ 
 uploadArchives {
     dependsOn 'reobf'
-	if (project.hasProperty("local_maven")) {
-		repositories {
-			logger.info('Publishing to local maven repo')
-
-			mavenDeployer {
-				repository(url: "file://${local_maven}")
-			}
-		}
-	}
 }

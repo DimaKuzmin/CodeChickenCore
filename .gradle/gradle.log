@@ -1,0 +1,68 @@
+1.7.10-10.13.4.1614-1.7.10
+1.7.10-10.13.4.1614-1.7.10
+WARNING: You are using an unsupported version of ForgeGradle.
+Please consider upgrading to ForgeGradle 4 and helping in the efforts to get old versions working on the modern toolchain.
+See https://gist.github.com/TheCurle/fe7ad3ede188cbdd15c235cc75d52d4a for more info on contributing.
+#################################################
+         ForgeGradle 1.2.2-g2ea0336        
+  https://github.com/MinecraftForge/ForgeGradle  
+#################################################
+               Powered by MCP unknown               
+             http://modcoderpack.com             
+         by: Searge, ProfMobius, Fesh0r,         
+         R4wk, ZeuX, IngisKahn, bspkrs           
+#################################################
+:compileApiJava UP-TO-DATE
+:processApiResources UP-TO-DATE
+:apiClasses UP-TO-DATE
+:sourceMainJava UP-TO-DATE
+:compileJavawarning: [options] bootstrap class path not set in conjunction with -source 1.6
+A:\MC_GIT\CodeChickenCore\build\sources\java\codechicken\core\launch\DepLoader.java:12: warning: URLClassPath is internal proprietary API and may be removed in a future release
+import sun.misc.URLClassPath;
+               ^
+A:\MC_GIT\CodeChickenCore\build\sources\java\codechicken\core\launch\DepLoader.java:13: warning: URLUtil is internal proprietary API and may be removed in a future release
+import sun.net.util.URLUtil;
+                   ^
+A:\MC_GIT\CodeChickenCore\build\sources\java\codechicken\core\launch\DepLoader.java:302: warning: URLClassPath is internal proprietary API and may be removed in a future release
+                Field f_loaders = URLClassPath.class.getDeclaredField("loaders");
+                                  ^
+A:\MC_GIT\CodeChickenCore\build\sources\java\codechicken\core\launch\DepLoader.java:303: warning: URLClassPath is internal proprietary API and may be removed in a future release
+                Field f_lmap = URLClassPath.class.getDeclaredField("lmap");
+                               ^
+A:\MC_GIT\CodeChickenCore\build\sources\java\codechicken\core\launch\DepLoader.java:308: warning: URLClassPath is internal proprietary API and may be removed in a future release
+                URLClassPath ucp = (URLClassPath) f_ucp.get(cl);
+                ^
+A:\MC_GIT\CodeChickenCore\build\sources\java\codechicken\core\launch\DepLoader.java:308: warning: URLClassPath is internal proprietary API and may be removed in a future release
+                URLClassPath ucp = (URLClassPath) f_ucp.get(cl);
+                                    ^
+A:\MC_GIT\CodeChickenCore\build\sources\java\codechicken\core\launch\DepLoader.java:309: warning: URLUtil is internal proprietary API and may be removed in a future release
+                Closeable loader = ((Map<String, Closeable>) f_lmap.get(ucp)).remove(URLUtil.urlNoFragString(url));
+                                                                                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+8 warnings
+
+:processResources
+:classes
+:devJar
+:jar
+:compileTestJava UP-TO-DATE
+:processTestResources UP-TO-DATE
+:testClasses UP-TO-DATE
+:test UP-TO-DATE
+:extractMcpData UP-TO-DATE
+:getVersionJsonhttp://s3.amazonaws.com/Minecraft.Download/versions/1.7.10/1.7.10.json  404'ed!
+
+:extractUserDev UP-TO-DATE
+:genSrgs SKIPPED
+:reobf
+:sourceJar
+:assemble
+:check UP-TO-DATE
+:build
+
+BUILD SUCCESSFUL
+
+Total time: 12.946 secs
